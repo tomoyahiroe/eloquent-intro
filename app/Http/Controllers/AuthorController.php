@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class AuthorController extends Controller
 {
+    // READ処理
     public function index()
     {
         $authors = Author::all();
@@ -30,6 +31,7 @@ class AuthorController extends Controller
         return view('find', $param);
     }
 
+    // CREATE処理
     public function add()
     {
         return view('add');
@@ -42,8 +44,18 @@ class AuthorController extends Controller
         return redirect('/');
     }
 
-    // public function edit()
-    // {
-    //     return view('edit');
-    // }
+    // UPDATE処理
+    public function edit(AuthorRequest $request)
+    {
+        $author = Author::find($request->id);
+        return view('edit', ['form' => $author]);
+    }
+
+    public function update(AuthorRequest $request)
+    {
+        $form = $request->all();
+        unset($form['_token']);
+        Author::where('id', $request->id)->update($form);
+        return redirect('/');
+    }
 }

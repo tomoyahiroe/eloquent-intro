@@ -16,7 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [AuthorController::class, 'index']);
 
+// 検索
 Route::get('/find', [AuthorController::class, 'find']);
 Route::post('/find', [AuthorController::class, 'search']);
+// Create
 Route::get('/add', [AuthorController::class, 'add']);
 Route::post('/add', [AuthorController::class, 'create']);
+// UPDATE
+Route::get('/edit', [AuthorController::class, 'edit']);
+Route::post('/edit', [AuthorController::class, 'update']);
