@@ -45,7 +45,7 @@ class AuthorController extends Controller
     }
 
     // UPDATE処理
-    public function edit(AuthorRequest $request)
+    public function edit(Request $request)
     {
         $author = Author::find($request->id);
         return view('edit', ['form' => $author]);
@@ -56,6 +56,19 @@ class AuthorController extends Controller
         $form = $request->all();
         unset($form['_token']);
         Author::where('id', $request->id)->update($form);
+        return redirect('/');
+    }
+
+    // DELETE処理
+    public function delete(Request $request)
+    {
+        $author = Author::find($request->id);
+        return view('delete', ['form' => $author]);
+    }
+
+    public function remove(AuthorRequest $request)
+    {
+        Author::find($request->id)->delete();
         return redirect('/');
     }
 }

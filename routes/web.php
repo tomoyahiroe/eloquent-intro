@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthorController;
+use App\Models\Author;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +26,6 @@ Route::post('/add', [AuthorController::class, 'create']);
 // UPDATE
 Route::get('/edit', [AuthorController::class, 'edit']);
 Route::post('/edit', [AuthorController::class, 'update']);
+// DELETE
+Route::get('/delete', [AuthorController::class, 'delete']);
+Route::post('/delete', [AuthorController::class, 'remove']);
