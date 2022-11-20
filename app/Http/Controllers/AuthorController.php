@@ -80,7 +80,7 @@ class AuthorController extends Controller
     public function bind(Author $author)
     {
         $data = [
-            'data' => $author,
+            'author' => $author,
         ];
         return view('author.binds', $data);
     }
