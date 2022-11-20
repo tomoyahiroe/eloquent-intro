@@ -41,6 +41,7 @@ class AuthorController extends Controller
     public function create(AuthorRequest $request)
     {
         $form = $request->all();
+        // dd($form);
         Author::create($form);
         return redirect('/');
     }
@@ -56,6 +57,7 @@ class AuthorController extends Controller
     {
         $form = $request->all();
         unset($form['_token']);
+        // dd($form);
         Author::where('id', $request->id)->update($form);
         return redirect('/');
     }
@@ -69,6 +71,7 @@ class AuthorController extends Controller
 
     public function remove(AuthorRequest $request)
     {
+        // dd(Author::find($request->id));
         Author::find($request->id)->delete();
         return redirect('/');
     }
