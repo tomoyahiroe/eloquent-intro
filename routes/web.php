@@ -29,3 +29,5 @@ Route::post('/edit', [AuthorController::class, 'update']);
 // DELETE
 Route::get('/delete', [AuthorController::class, 'delete']);
 Route::post('/delete', [AuthorController::class, 'remove']);
+//path parameter
+Route::get('author/{author}', [AuthorController::class, 'bind']);
