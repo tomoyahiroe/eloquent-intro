@@ -23,7 +23,7 @@ class AuthorController extends Controller
 
     public function search(Request $request)
     {
-        $author = Author::find($request->input);
+        $author = Author::where('name', 'LIKE BINARY', "%{$request->input}%")->first();
         $param = [
             'author' => $author,
             'input' => $request->input
