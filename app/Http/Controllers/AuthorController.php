@@ -25,8 +25,8 @@ class AuthorController extends Controller
     {
         $author = Author::where('name', 'LIKE BINARY', "%{$request->input}%")->first();
         $param = [
+            'input' => $request->input,
             'author' => $author,
-            'input' => $request->input
         ];
 
         return view('find', $param);
